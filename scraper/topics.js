@@ -9,6 +9,6 @@ var topics = [
 topics.forEach(function(item) {
   scraper.scrapeTopics(item, function(result){
     console.log("Processing: ", item) 
-      scraper.writeFile('topics.json', result);
+      scraper.writeFile('data/topics.json', result);
   })
 });

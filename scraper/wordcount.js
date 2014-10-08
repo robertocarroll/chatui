@@ -1,4 +1,6 @@
-fs = require("fs");
+fs = require("fs"),
+	commaIt = require('comma-it');
+
 var wordCounts = Object.create(null);
 
 function countWordsInText(text) {
@@ -16,7 +18,9 @@ function countWordsInText(text) {
     }
 }
 
-fs.readFile('articles.json', 'utf8', function (err, topicJSON) {
+
+
+fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
   var articleArray = [], articles = JSON.parse(topicJSON);
 
   articles.forEach(function(item, index) {
@@ -36,13 +40,18 @@ fs.readFile('articles.json', 'utf8', function (err, topicJSON) {
 		  }
 		}
 
-	var summed = 0;
+	var totalWords = 0;
 		
 		for (var key in wordCounts) {
-		    summed += wordCounts[key];
+		    totalWords += wordCounts[key];
 		};
 
-	 console.log(summed);
+	var readingTime = Math.round(totalWords / 250);	
+
+	totalWords = commaIt(totalWords, {precision: 0, thousandSeperator : ','});
+
+	 console.log('The total number of words is ' + totalWords 
+	 	+ ' and the average reader would take ' + readingTime + ' minutes to read them' );
 
 });
 

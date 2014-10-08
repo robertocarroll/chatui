@@ -1,12 +1,16 @@
 {
-  "name"         : "node-web-scrape",
+  "name"         : "chat-scraper",
   "version"      : "0.0.1",
-  "description"  : "Scrape le web.",
+  "description"  : "Scape and process MEN content",
   "main"         : "server.js",
-  "author"       : "Scotch",
+  "author"       : "robertocarroll",
+  "private": true,
   "dependencies" : {
     "express"    : "latest",
     "request"    : "latest",
     "cheerio"    : "latest"
+  },
+  "repository" :{ "type" : "git"
+  , "url" : "https://github.com/robertocarroll/chatui"
   }
 }

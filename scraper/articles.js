@@ -6,7 +6,7 @@ var articleData = [];
 // **************************************************************************
 // USE THE OUTPUT FROM TOPICS.JS TO GET THE BODY TEXT OF THE ARTICLES
 // **************************************************************************
-fs.readFile('topics.json', 'utf8', function (err, topicJSON) {
+fs.readFile('data/topics.json', 'utf8', function (err, topicJSON) {
   var articleArray = [], articles = JSON.parse(topicJSON);
 
   articles.forEach(function(item, index) {
@@ -31,6 +31,6 @@ function step(item, list) {
       return step(list.shift(), list);
     });
   } else {
-    return scraper.writeFile('articles.json', articleData);
+    return scraper.writeFile('data/articles.json', articleData);
   }
 }
