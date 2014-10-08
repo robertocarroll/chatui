@@ -11,7 +11,7 @@ scrapeTopics: function (item, callback) {
 
     var $ = cheerio.load(html);
     
-    $('.teaser-info').each(function(i, element){
+    $('.article').each(function(i, element){
       
     	var raw = $(this);  
     	var title = $(raw).find('h2');
@@ -38,6 +38,17 @@ scrapeTopics: function (item, callback) {
       
       } else{
         console.log("HTML Load Error: " + error )
+      }
+    });
+  },scrapeArticle: function (item, callback) {
+    var rec = {};
+    request(item, function (error, response, html) {
+      if (!error) {
+        var $ = cheerio.load(html);
+        rec['article'] = cleanText($('.body').text());
+        callback(rec);
+      } else{
+        console.log("HTML LOAD Error: " + error )
       }
     });
   },
