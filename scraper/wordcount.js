@@ -5,6 +5,7 @@ fs = require("fs"),
 var articleArray = [];	
 var datesArray = [];
 
+
 fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
   var articles = JSON.parse(topicJSON);
 
@@ -28,7 +29,7 @@ fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
     })(i);
 
 		}
-		totalCount();
+		
 		getDate();
 
 });
@@ -51,7 +52,19 @@ function countWordsInText(text) {
 
 }
 
-function totalCount () {
+function getDate () {
+
+	var maxDate = moment(new Date(Math.max.apply(null,datesArray)));
+  var minDate = moment(new Date(Math.min.apply(null,datesArray)));
+
+	minDate = minDate.fromNow(true);
+	maxDate = maxDate.fromNow(true);
+
+	totalCount (minDate, maxDate);
+		
+}
+
+function totalCount (minDate, maxDate) {
 		var totalWords = 0;
 		for (var key in wordCounts) {
 		    totalWords += wordCounts[key];
@@ -60,20 +73,14 @@ function totalCount () {
 	var readingTime = Math.round(totalWords / 250);	
 	totalWords = commaIt(totalWords, {precision: 0, thousandSeperator : ','});
 
-	 console.log('MEN have have written ' + totalWords 
-	 	+ ' about me and the average reader would take about ' + readingTime + ' minutes to read them' );
+	 console.log('MEN has written ' + totalWords 
+	 	+ ' words about me in the last ' + minDate + ' and the average reader would take about ' + readingTime + ' minutes to read them' );
 
+	 console.log('The latest article was '+maxDate + ' ago'); 
+	console.log('The oldest article was '+minDate + ' ago'); 
 }	 
 
-function getDate () {
 
-	var maxDate = moment(new Date(Math.max.apply(null,datesArray)));
-  var minDate = moment(new Date(Math.min.apply(null,datesArray)));
-
-	console.log('The latest article about me was published '+maxDate.fromNow(true) + ' ago'); 
-	console.log('The oldest article about me was published '+minDate.fromNow(true) + ' ago'); 
-
-}
 
 
 
