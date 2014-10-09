@@ -14,7 +14,7 @@ scrapeTopics: function (item, callback) {
     $('.article').each(function(i, element){
       
     	var raw = $(this);  
-    	var title = $(raw).find('h2');
+    	var title = $(raw).find('h2, h3');
     	title = title.text();
       title = title.trim(); 
 

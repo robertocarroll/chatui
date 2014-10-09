@@ -22,8 +22,7 @@ fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
   var articleArray = [], articles = JSON.parse(topicJSON);
 
   articles.forEach(function(item, index) {
-      articleArray.push({article: item.article});
-      
+      articleArray.push({article: item.article});      
   });
 
    var text = {};
