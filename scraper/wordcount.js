@@ -1,8 +1,12 @@
 fs = require("fs"),
-	commaIt = require('comma-it');
+	commaIt = require('comma-it'),
+	moment = require('moment');
+
+var articleArray = [];	
+var datesArray = [];
 
 fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
-  var articleArray = [], articles = JSON.parse(topicJSON);
+  var articles = JSON.parse(topicJSON);
 
   articles.forEach(function(item, index) {
       articleArray.push({title: item.title, date: item.date, link: item.link, article: item.article});      
@@ -18,11 +22,14 @@ fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
         var s = articleArray[i].article;				   
 				text = s.toString();
 				countWordsInText(text);
+
+				datesArray.push(new Date(moment(articleArray[i].date, "DD-MM-YYYY")));
+
     })(i);
 
 		}
-
 		totalCount();
+		getDate();
 
 });
 
@@ -53,12 +60,20 @@ function totalCount () {
 	var readingTime = Math.round(totalWords / 250);	
 	totalWords = commaIt(totalWords, {precision: 0, thousandSeperator : ','});
 
-	 console.log('The total number of words MEN have written about me is ' + totalWords 
-	 	+ ' and the average reader would take ' + readingTime + ' minutes to read them' );
+	 console.log('MEN have have written ' + totalWords 
+	 	+ ' about me and the average reader would take about ' + readingTime + ' minutes to read them' );
 
 }	 
 
+function getDate () {
 
+	var maxDate = moment(new Date(Math.max.apply(null,datesArray)));
+  var minDate = moment(new Date(Math.min.apply(null,datesArray)));
+
+	console.log('The latest article about me was published '+maxDate.fromNow(true) + ' ago'); 
+	console.log('The oldest article about me was published '+minDate.fromNow(true) + ' ago'); 
+
+}
 
 
 
