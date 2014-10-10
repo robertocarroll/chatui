@@ -1,8 +1,11 @@
 Exploration of conversational UI
 
 ##Hubot 
+Need Redis running to run Hubot locally:
+redis-server /usr/local/etc/redis.conf
 
-
+To launch:
+bin/hubot
 
 ##Scraper
 1. Topics.js goes and gets the title, date and url from an MEN topic page.

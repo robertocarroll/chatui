@@ -5,7 +5,6 @@ fs = require("fs"),
 var articleArray = [];	
 var datesArray = [];
 
-
 fs.readFile('data/articles.json', 'utf8', function (err, topicJSON) {
   var articles = JSON.parse(topicJSON);
 
@@ -74,7 +73,7 @@ function totalCount (minDate, maxDate) {
 	totalWords = commaIt(totalWords, {precision: 0, thousandSeperator : ','});
 
 	 console.log('MEN has written ' + totalWords 
-	 	+ ' words about me in the last ' + minDate + ' and the average reader would take about ' + readingTime + ' minutes to read them' );
+	 	+ ' words about me in the last ' + minDate + ' and a human would take about ' + readingTime + ' minutes to read them all' );
 
 	 console.log('The latest article was '+maxDate + ' ago'); 
 	console.log('The oldest article was '+minDate + ' ago'); 
