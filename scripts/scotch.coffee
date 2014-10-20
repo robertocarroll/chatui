@@ -14,10 +14,9 @@
 #   fusion94
 
 scotch = [
-  "hello1",
-  "hello2"
+  "hello1"
 ]
 
 module.exports = (robot) ->
-  robot.hear /scotch ?me/i, (msg) ->
-    msg.send msg.random scotch 
+  robot.hear /hello ?me/i, (msg) ->
+    msg.send msg scotch 
