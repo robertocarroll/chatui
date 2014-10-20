@@ -14,11 +14,8 @@
 #   fusion94
 
 scotch = [
-  "https://s3.amazonaws.com/scotch-assets/scotch_1.jpg",
-  "https://s3.amazonaws.com/scotch-assets/scotch_2.jpg",
-  "https://s3.amazonaws.com/scotch-assets/scotch_3.jpg",
-  "https://s3.amazonaws.com/scotch-assets/scotch_4.jpg",
-  "https://s3.amazonaws.com/scotch-assets/scotch_5.jpg"
+  "hello1",
+  "hello2"
 ]
 
 module.exports = (robot) ->
