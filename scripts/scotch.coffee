@@ -13,10 +13,7 @@
 # Author:
 #   fusion94
 
-scotch = [
-  "hello1"
-]
 
 module.exports = (robot) ->
-  robot.hear /hello ?me/i, (msg) ->
-    msg.send msg scotch 
+  robot.respond /hi|hello/i, (msg) ->
+    msg.send "Howdy!"
