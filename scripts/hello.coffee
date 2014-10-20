@@ -1,5 +1,5 @@
 # Description:
-#   Display a random image of Scotch
+#   Display hello
 #
 # Dependencies:
 #   None
@@ -8,10 +8,10 @@
 #   None
 #
 # Commands:
-#   scotch me e e e - supply a user with scotch
+#   hi / hello
 #
 # Author:
-#   fusion94
+#   robertocarroll
 
 
 module.exports = (robot) ->
