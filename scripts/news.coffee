@@ -4,12 +4,13 @@
 # Dependencies:
 #   "request": "2.14.x",
 #   "feedparser": "0.16.x"
+#		"moment": "2.8.3"
 #
 # Configuration:
 #   None
 #
 # Commands:
-#   news / latest news
+#   latest news
 #
 # Author:
 #   robertocarroll
@@ -48,9 +49,9 @@ getTheArticle = (callback) ->
   )
 
 module.exports = (robot) ->
-  robot.hear /news ?/i, (msg) ->
+  robot.hear /latest news ?/i, (msg) ->
     gotItThanks = false
 
     getTheArticle (article, theLink, theDate) ->
-      msg.send "Hot off the press comes '#{article}'. It's #{theDate} old. Read all about it here: #{theLink}" unless gotItThanks
+      msg.send "Hot off the press comes '#{article}'. It's #{theDate} old. You can read all about it here: #{theLink}" unless gotItThanks
       gotItThanks = true
