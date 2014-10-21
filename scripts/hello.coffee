@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hi / hello
+#   hi / hello - Replies with a greeting
 #
 # Author:
 #   robertocarroll

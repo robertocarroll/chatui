@@ -10,7 +10,7 @@
 #   None
 #
 # Commands:
-#   latest news
+#   latest news - Gets the latest story from MEN.
 #
 # Author:
 #   robertocarroll
