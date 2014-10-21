@@ -52,5 +52,5 @@ module.exports = (robot) ->
     gotItThanks = false
 
     getTheArticle (article, theLink, theDate) ->
-      msg.send "Hot off the press comes <strong>#{article}</strong>. It's #{theDate} old. Read all about it here: #{theLink}" unless gotItThanks
+      msg.send "Hot off the press comes '#{article}'. It's #{theDate} old. Read all about it here: #{theLink}" unless gotItThanks
       gotItThanks = true
