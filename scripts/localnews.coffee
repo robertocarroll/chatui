@@ -23,7 +23,7 @@ getTheArticle = (callback) ->
   feedparser = new FeedParser()
 
   req = request(
-    url: 'http://www.manchestereveningnews.co.uk/all-about/manchester-central-reference-library'
+    url: 'http://www.manchestereveningnews.co.uk/all-about/manchester-central-reference-library?service=rss'
 
     headers:
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36'
