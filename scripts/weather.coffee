@@ -20,7 +20,7 @@
 #   kyleslattery
 module.exports = (robot) ->
   robot.hear /weather ?(.+)?/i, (msg) ->
-    location = msg.match[1] || process.env.HUBOT_DARK_SKY_DEFAULT_LOCATION
+    location = process.env.HUBOT_DARK_SKY_DEFAULT_LOCATION
     return if not location
 
     googleurl = "http://maps.googleapis.com/maps/api/geocode/json"
