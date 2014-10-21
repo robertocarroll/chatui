@@ -72,11 +72,15 @@ function totalCount (minDate, maxDate) {
 	var readingTime = Math.round(totalWords / 250);	
 	totalWords = commaIt(totalWords, {precision: 0, thousandSeperator : ','});
 
-	 console.log('MEN has written ' + totalWords 
-	 	+ ' words about me in the last ' + minDate + ' and a human would take about ' + readingTime + ' minutes to read them all' );
+	var stream = fs.createWriteStream("data/results.txt");
+		stream.once('open', function(fd) {
+		  stream.write('MEN has written ' + totalWords 
+	 	+ ' words about me in the last ' + minDate + ' and a human would take about ' + readingTime + ' minutes to read them all. ');
+		  stream.write('The latest article was '+maxDate + ' ago. ');
+		  stream.write('The oldest article was '+minDate + ' ago.');
+		  stream.end();
+		});
 
-	 console.log('The latest article was '+maxDate + ' ago'); 
-	console.log('The oldest article was '+minDate + ' ago'); 
 }	 
 
 

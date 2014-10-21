@@ -18,6 +18,7 @@
 #
 # Author:
 #   kyleslattery
+
 module.exports = (robot) ->
   robot.hear /weather ?(.+)?/i, (msg) ->
     location = process.env.HUBOT_DARK_SKY_DEFAULT_LOCATION
