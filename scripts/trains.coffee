@@ -19,7 +19,7 @@
 #  JamieMagee
 
 module.exports = (robot) ->
-  robot.hears /trains (\w{3})( (to)*(.*))*/i, (msg) ->
+  robot.hear /trains (\w{3})( (to)*(.*))*/i, (msg) ->
     trainFrom = if !!msg.match[4] then msg.match[1].toUpperCase() else process.env.HUBOT_DEFAULT_STATION
     trainTo =  if !!msg.match[4] then msg.match[4].toUpperCase() else msg.match[1].toUpperCase()
     msg.http('http://ojp.nationalrail.co.uk/service/ldb/liveTrainsJson')
