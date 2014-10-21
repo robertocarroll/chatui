@@ -3,8 +3,7 @@
 #
 # Dependencies:
 #   "request": "2.14.x",
-#   "feedparser": "0.16.x",
-#   "html-entities": "1.0.x"
+#   "feedparser": "0.16.x"
 #
 # Configuration:
 #   None
@@ -17,6 +16,7 @@
 
 FeedParser = require('feedparser')
 request = require('request')
+moment = require('moment')
 
 getTheArticle = (callback) ->
   feedparser = new FeedParser()
@@ -44,13 +44,13 @@ getTheArticle = (callback) ->
   feedparser.on('readable', ->
 	  while item = @read()
 	  	for line in item.title.split(/<br *\/>/)
-        callback(line, item.link)
+        callback(line, item.link, moment(item.date, "ddd MMM DD YYYY HH:mm:ss ZZ").fromNow(true))
   )
 
 module.exports = (robot) ->
   robot.hear /news ?/i, (msg) ->
     gotItThanks = false
 
-    getTheArticle (article, theLink) ->
-      msg.send "Hot off the press comes #{article}. It's x old. Read all about it here: #{theLink}" unless gotItThanks
+    getTheArticle (article, theLink, theDate) ->
+      msg.send "Hot off the press comes <strong>#{article}</strong>. It's #{theDate} old. Read all about it here: #{theLink}" unless gotItThanks
       gotItThanks = true
