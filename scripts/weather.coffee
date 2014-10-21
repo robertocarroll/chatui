@@ -35,7 +35,7 @@ module.exports = (robot) ->
           lat = result.results[0].geometry.location.lat
           lng = result.results[0].geometry.location.lng
           darkSkyMe msg, lat,lng , (darkSkyText) ->
-            response = "Weather for #{result.results[0].formatted_address}. #{darkSkyText}"
+            response = "Here's the weather for #{result.results[0].formatted_address}. #{darkSkyText}"
             msg.send response
         else
           msg.send "Couldn't find #{location}"
@@ -59,7 +59,7 @@ darkSkyMe = (msg, lat, lng, cb) ->
       else
         celsius = result.currently.temperature
         fahrenheit = celsius * (9 / 5) + 32
-      response = "Currently: #{result.currently.summary} (#{celsius}°C) "
-      response += "Today: #{result.hourly.summary} "
-      response += "Coming week: #{result.daily.summary}"
+      response = "It's currently: #{result.currently.summary} (#{celsius}°C) "
+      response += "Today, it's going to be #{result.hourly.summary} "
+      response += "Later in the week there's going to be #{result.daily.summary}"
       cb response
