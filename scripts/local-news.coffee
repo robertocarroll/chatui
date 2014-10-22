@@ -49,7 +49,7 @@ getTheArticle = (callback) ->
   )
 
 module.exports = (robot) ->
-  robot.hear /latest local news ?/i, (msg) ->
+  robot.hear /latest local story|latest story about you ?/i, (msg) ->
     gotItThanks = false
 
     getTheArticle (article, theLink, theDate) ->
