@@ -16,4 +16,4 @@
 
 module.exports = (robot) ->
   robot.hear /hi|hello/i, (msg) ->
-    msg.send "Hello. I'm Libby. I'm a robot that helps you find out interesting things about the Central Library in Manchester. I can show you the latest stories from the Manchester Evening News ('latest news'), tell you stories from Manchester Evening News about me ('local news'), find pictures of me from the archives ('old image') and tell you the weather ('weather'). Please keep it simple - I'm learning"
+    msg.send "Hello. I'm Libby. I'm a robot that helps you find out interesting things about the Central Library in Manchester. I can show you the latest stories from the Manchester Evening News ('latest news'), tell you about stories from Manchester Evening News about me ('local news' and 'latest local story'), find pictures of me from the archives ('old image') and tell you the weather ('weather'). Please keep it simple - I'm learning"
