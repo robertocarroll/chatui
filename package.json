@@ -27,7 +27,7 @@
     "request": "2.14.x",
 		"feedparser": "0.16.x",
 		"moment": "2.8.3",
-		"hubot-twilio": "2.1.0"
+		"hubot-twilio": "Queens-Hacks/hubot-twilio"
   },
   "engines": {
     "node": ">= 0.8.x",
