@@ -8,7 +8,7 @@ I have arrived at the Central Library in Manchester. I am meeting a friend at th
 - Central Libary is the exemplar. Other possible locations include town hall, Picadilly Gardens, postbox in Arndale centre, train stations, cafes, art galleries, parks and other public spaces. 
 
 ## Value
-![Diagram of possible uses of MEN project](https://flic.kr/p/pS55FE)
+![Diagram of possible uses of MEN project](https://farm8.staticflickr.com/7485/15662826668_23c1ee4ea3_c.jpg)
 
 ## Aims / Guides
 - Serve relevant information from a wide range of sources in playful, witty and engaging ways
