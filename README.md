@@ -1,6 +1,5 @@
 # How to make Manchester Evening News part of the fabric of the city.
 Exploring what lies between the physical newspaper and the digital web/app. What are the physical manifestations of news in a city? The project targets the *mobile* audience and the *local* audience.  
-
 ## Scenario
 I have arrived at the Central Library in Manchester. I am meeting a friend at the cafe and I have a few minutes to spare. I see the sign about having a conversation with building itself. Intrigued I pull out my phone and text "Hello" to the number. 
 
@@ -9,11 +8,7 @@ I have arrived at the Central Library in Manchester. I am meeting a friend at th
 - Central Libary is the exemplar. Other possible locations include town hall, Picadilly Gardens, postbox in Arndale centre, train stations, cafes, art galleries, parks and other public spaces. 
 
 ## Value
-1. Service discovery
-2. Ambient data
-3. Citizen responsiveness
-4. Structured / open data   
-5. Archives, history, stories 
+![Diagram of possible uses of MEN project](https://flic.kr/p/pS55FE)
 
 ## Aims / Guides
 - Serve relevant information from a wide range of sources in playful, witty and engaging ways
