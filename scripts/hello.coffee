@@ -13,7 +13,22 @@
 # Author:
 #   robertocarroll
 
+moment = require 'moment'
+
+# get current time
+currentHour = moment().hour()
+greeting = 'hello'
+
+# get current time
+weather = 
 
 module.exports = (robot) ->
   robot.hear /hi|hello/i, (msg) ->
-    msg.send "Hello. I'm Libby. I'm a robot that helps you find out interesting things about the Central Library in Manchester. I can show you the latest stories from the Manchester Evening News ('latest news'), tell you about stories from Manchester Evening News about me ('local news' and 'latest local story'), find pictures of me from the archives ('old image') and tell you the weather ('weather'). Please keep it simple - I'm learning"
+  	# Time
+  	if currentHour < 12
+      greeting = 'Good morning'
+    if currentHour >= 12 && currentHour <= 17
+      greeting = 'Good afternoon'
+    if currentHour > 17 && currentHour <= 24
+      greeting = 'Good evening'     
+  	msg.send greeting 
