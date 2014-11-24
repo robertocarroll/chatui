@@ -1,7 +1,7 @@
 # Description:
 #   Make sure that hubot knows the rules.
 #
-# Commands:
+# Command: [not included in help script]
 #   hubot the rules - Make sure hubot still knows the rules.
 #
 # Notes:

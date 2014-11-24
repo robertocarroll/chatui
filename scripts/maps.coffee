@@ -1,7 +1,7 @@
 # Description:
 #   Interacts with the Google Maps API.
 #
-# Commands:
+# Command: [not included in help script]
 #   map me <query> - Returns a map view of the area returned by `query`.
 
 module.exports = (robot) ->

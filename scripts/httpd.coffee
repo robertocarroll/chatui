@@ -7,7 +7,7 @@
 # Configuration:
 #   None
 #
-# Commands:
+# Command: [not included in help script]
 #   None
 #
 # URLS:

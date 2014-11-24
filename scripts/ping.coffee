@@ -1,7 +1,7 @@
 # Description:
 #   Utility commands surrounding Hubot uptime.
 #
-# Commands:
+# Command: [not included in help script]
 #   hubot ping - Reply with pong
 #   hubot echo <text> - Reply back with <text>
 #   hubot time - Reply with current time

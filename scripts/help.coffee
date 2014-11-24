@@ -1,7 +1,7 @@
 # Description:
 #   Generates help commands for Hubot.
 #
-# Commands:
+# Command: [not included in help script]
 #   help - Displays all of the help commands that Libby knows about.
 #
 # URLS:
