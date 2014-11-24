@@ -64,7 +64,7 @@ module.exports = (robot) ->
 
     # Weather  
     getWeather msg, (currentWeather) ->  
-    	msg.send greeting + '. ' + currentWeather + [msg.random pleasantry] + chatEnding
+    	msg.send currentHour + greeting + '. ' + currentWeather + [msg.random pleasantry] + chatEnding
     
 
 
