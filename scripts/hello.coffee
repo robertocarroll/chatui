@@ -15,8 +15,7 @@
 
 moment = require 'moment'
 
-# get current time
-currentHour = moment().hour()
+# default greeting
 greeting = 'Hello'
 
 # get the weather
@@ -53,8 +52,8 @@ chatEnding = [
 
 module.exports = (robot) ->
   robot.hear /hi|hello/i, (msg) ->
-    
     # Time
+    currentHour = moment().hour()
     if currentHour < 12
       greeting = 'Good morning'
     if currentHour >= 12 && currentHour <= 17
