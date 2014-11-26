@@ -32,23 +32,40 @@ question_bank = [
 		}
 	]	
 
+# Varied response
+response = [
+	"I see. ",
+	"Interesting. "
+]	
+
 module.exports = (robot) ->
 	robot.brain.on 'loaded', =>
 		robot.logger.info "Loading knowledge"
 		robot.brain.data.questions ?= []
 
-		robot.brain.data.questions = question_bank # unless robot.brain.data.questions.length
+		robot.brain.data.questions = question_bank unless robot.brain.data.questions.length
 		current_question = null
+
+		# Fisher-Yates shuffle in Coffeescript https://gist.github.com/smrchy/3098096
+		shuffle = (a) ->
+    i = a.length
+    while --i > 0
+        j = ~~(Math.random() * (i + 1))
+        t = a[j]
+        a[j] = a[i]
+        a[i] = t
+    a
 
 		robot.hear /chat/i, (msg) ->
 			# get the IDs of all the questions	
 			question_id = (get_question.id for get_question in robot.brain.data.questions)
 			robot.logger.info question_id
-			# generate a random question ID  
-			current_question = question_id[Math.floor(Math.random() * question_id.length)]
+			# generate a random question ID 
+			shuffle (question_id) 
+			current_question = question_id[0]
 			robot.logger.info current_question
 			# need to remove the current question id from the question_id so it isn't repeated 
-			# question_id.filter (i) -> i is current_question
+
 			# ask the question 
 			msg.send robot.brain.data.questions[current_question].question
 
@@ -60,7 +77,10 @@ module.exports = (robot) ->
 				if current_question == value.id
 					value.answers.push new_answer 
 					robot.logger.info robot.brain.data.questions[current_question].answers
-			msg.send current_question + ' '
+			newArr = robot.brain.data.questions[current_question].answers.filter (word) -> word isnt new_answer				
+			shuffled_answer = shuffle (newArr)	
+			robot.logger.info shuffled_answer		
+			msg.send [msg.random response] + [if shuffled_answer.length > 1 then 'Someone else told me ' + shuffled_answer[0].answer]
 
 		# Add a new question via Hubot 	
 		robot.respond /question (.*)$/i, (msg) ->
@@ -69,6 +89,13 @@ module.exports = (robot) ->
 			new_question = {id:next_id, question: question_value, answers: []}
 			robot.brain.data.questions.push new_question
 			msg.send "OK, I've added \"#{question_value}\" as a new question"
+
+		# Remove an existing question via Hubot 	
+		robot.respond /remove (.*)$/i, (msg) ->
+			question_cull = msg.match[1]
+			robot.logger.info question_cull	
+			robot.brain.data.questions.splice(question_cull, 1)
+			msg.send "OK, I've removed question ID \"#{question_cull}\" from the question bank"	
 
 	
 

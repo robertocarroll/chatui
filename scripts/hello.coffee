@@ -30,11 +30,12 @@ getWeather = (msg, cb) ->
     			weatherSummary = result.currently.icon
     			rainProb = result.currently.precipIntensity
     			# see here for details https://developer.forecast.io/docs/v2#forecast_call
-    			if celsius < 10 then currentWeather = "It's a bit chilly today. "
-    			else if rainProb >= 0.1 then currentWeather = "Looks like rain. "
-    			else if weatherSummary = 'clear-day' then currentWeather = "What a nice day. "
+    			currentWeather = " "
+    			if celsius < 7 then currentWeather = "It's a bit chilly today. "
+    			if rainProb >= 0.1 then currentWeather = "Looks like rain. "
+    			if weatherSummary = 'clear-day' then currentWeather = "What a nice day. "
+    			if weatherSummary = 'partly-cloudy-day' or 'cloudy' then currentWeather = "It's a bit dreary. "
     			# else if currentHour - result.currently.sunsetTime <= 1 then currentWeather = "It's nearly dark. "
-    			else currentWeather = " "
     		catch e
     			currentWeather = ' '
     		cb currentWeather
