@@ -21,13 +21,14 @@
     "url": "https://github.com/github/hubot.git"
   },
   "dependencies": {
+  	"feedparser": "0.16.x",
     "hubot": ">= 2.6.0 < 3.0.0",
     "hubot-heroku-keepalive": "0.0.4",
+    "hubot-twilio": "Queens-Hacks/hubot-twilio",
     "hubot-scripts": ">= 2.5.0 < 3.0.0",
-    "request": "2.14.x",
-		"feedparser": "0.16.x",
 		"moment": "2.8.3",
-		"hubot-twilio": "Queens-Hacks/hubot-twilio"
+		"request": "2.14.x",
+		"underscore":"1.7.0"
   },
   "engines": {
     "node": ">= 0.8.x",

@@ -51,7 +51,7 @@ chatEnding = [
 ]
 
 module.exports = (robot) ->
-  robot.hear /hi|hello/i, (msg) ->
+  robot.hear /hello/i, (msg) ->
     # Time
     currentHour = moment().hour()
     if currentHour < 12
@@ -63,7 +63,7 @@ module.exports = (robot) ->
 
     # Weather  
     getWeather msg, (currentWeather) ->  
-    	msg.send currentHour + greeting + '. ' + currentWeather + [msg.random pleasantry] + chatEnding
+    	msg.send greeting + '. ' + currentWeather + [msg.random pleasantry] + chatEnding
     
 
 
