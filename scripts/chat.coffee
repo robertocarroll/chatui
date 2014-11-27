@@ -88,18 +88,19 @@ module.exports = (robot) ->
 
 			getQuestion (current_question) ->  
 				question_text = robot.brain.data.questions[current_question].question
-				msg.send [msg.random response_to_answer] + [if shuffled_answer.length > 1 then 'Someone else told me ' + "'" + shuffled_answer[0].answer] + "'. " + [msg.random conjunction] + question_text			
+				msg.send [msg.random response_to_answer] + [if shuffled_answer.length > 1 then 'Someone else told me ' + "'" + shuffled_answer[0].answer + "'. "] + [msg.random conjunction] + question_text			
 
 		# Add a new question via Hubot 	
-		robot.respond /question (.*)$/i, (msg) ->
+		robot.hear /question$4 (.*)$/i, (msg) ->
 			question_value = msg.match[1]
 			next_id = robot.brain.data.questions.length    
 			new_question = {id:next_id, question: question_value, answers: []}
 			robot.brain.data.questions.push new_question
+			robot.logger.info 
 			msg.send "OK, I've added \"#{question_value}\" as a new question"
 
 		# Remove an existing question via Hubot 	
-		robot.respond /remove (.*)$/i, (msg) ->
+		robot.hear /remove$4 (.*)$/i, (msg) ->
 			question_cull = msg.match[1]
 			robot.logger.info question_cull	
 			robot.brain.data.questions.splice(question_cull, 1)
