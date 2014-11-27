@@ -44,6 +44,7 @@ module.exports = (robot) ->
 		robot.brain.data.questions ?= []
 
 		robot.brain.data.questions = question_bank unless robot.brain.data.questions.length
+		robot.logger.info robot.brain.data.questions
 		current_question = null
 
 		# Fisher-Yates shuffle in Coffeescript https://gist.github.com/smrchy/3098096
@@ -103,7 +104,7 @@ module.exports = (robot) ->
 		robot.hear /remove$4 (.*)$/i, (msg) ->
 			question_cull = msg.match[1]
 			robot.logger.info question_cull	
-			robot.brain.data.questions.splice(question_cull, 1)
+			# robot.brain.data.questions.splice(question_cull, 1)
 			msg.send "OK, I've removed question ID \"#{question_cull}\" from the question bank"	
 
 	
