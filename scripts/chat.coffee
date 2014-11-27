@@ -33,10 +33,10 @@ question_bank = [
 	]	
 
 # Varied response
-response = [
-	"I see. ",
-	"Interesting. "
-]	
+response_to_answer = ["I see. ", "Interesting. "]
+
+# Varied conjunction
+conjunction = ["Here's another question for you. ", "Another question for you. "]
 
 module.exports = (robot) ->
 	robot.brain.on 'loaded', =>
@@ -56,7 +56,7 @@ module.exports = (robot) ->
         a[i] = t
     a
 
-		robot.hear /chat/i, (msg) ->
+		getQuestion = (cb) ->
 			# get the IDs of all the questions	
 			question_id = (get_question.id for get_question in robot.brain.data.questions)
 			robot.logger.info question_id
@@ -64,23 +64,31 @@ module.exports = (robot) ->
 			shuffle (question_id) 
 			current_question = question_id[0]
 			robot.logger.info current_question
-			# need to remove the current question id from the question_id so it isn't repeated 
+			cb current_question
 
-			# ask the question 
-			msg.send robot.brain.data.questions[current_question].question
+		robot.hear /chat/i, (msg) ->
+			getQuestion (current_question) ->  
+				question_text = robot.brain.data.questions[current_question].question
+				msg.send question_text
+			
+			# need to remove the current question id from the question_id so it isn't repeated 
 
 		robot.hear /answer (.*)$/i, (msg) ->
 			date = moment().unix()
 			answer = msg.match[1]
 			new_answer = {date: date, answer: answer}
+			
 			for key,value of robot.brain.data.questions
 				if current_question == value.id
 					value.answers.push new_answer 
 					robot.logger.info robot.brain.data.questions[current_question].answers
-			newArr = robot.brain.data.questions[current_question].answers.filter (word) -> word isnt new_answer				
-			shuffled_answer = shuffle (newArr)	
+			answers_without_current = robot.brain.data.questions[current_question].answers.filter (exclude_current) -> exclude_current isnt new_answer				
+			shuffled_answer = shuffle (answers_without_current)	
 			robot.logger.info shuffled_answer		
-			msg.send [msg.random response] + [if shuffled_answer.length > 1 then 'Someone else told me ' + shuffled_answer[0].answer]
+
+			getQuestion (current_question) ->  
+				question_text = robot.brain.data.questions[current_question].question
+				msg.send [msg.random response_to_answer] + [if shuffled_answer.length > 1 then 'Someone else told me ' + "'" + shuffled_answer[0].answer] + "'. " + [msg.random conjunction] + question_text			
 
 		# Add a new question via Hubot 	
 		robot.respond /question (.*)$/i, (msg) ->
