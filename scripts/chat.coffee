@@ -32,8 +32,7 @@ module.exports = (robot) ->
 		robot.logger.info "Loading knowledge"
 		robot.brain.data.questions ?= {}
 
-		# if _.isUndefined(robot.brain.data.questions) then 
-		robot.brain.data.questions = initial_question_bank
+		if _.isUndefined(robot.brain.data.questions) then robot.brain.data.questions = initial_question_bank
 		question_bank = robot.brain.data.questions
 		current_question = null
 		question_ids = Object.keys(question_bank)
@@ -73,3 +72,10 @@ module.exports = (robot) ->
 			getQuestion (question_text) ->
 				robot.logger.info robot.brain.data.questions
 				msg.send [msg.random response_to_answer] + [if shuffled_answer.length > 0 then 'Someone else told me ' + "'" + shuffled_answer[0] + "'. "] + question_text
+
+			robot.hear /reset/i, (msg) ->	
+				question_bank = robot.brain.data.questions
+				current_question = null
+				question_ids = Object.keys(question_bank)
+				used_questions = []
+				msg.send "All the questions are back on the table."
