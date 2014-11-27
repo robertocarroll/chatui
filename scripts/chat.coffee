@@ -107,7 +107,7 @@ module.exports = (robot) ->
 			msg.send "OK, I've removed question ID \"#{question_cull}\" from the question bank"	
 
 		# see questions	
-		robot.hear /view4 (.*)$/i, (msg) ->	
+		robot.hear /view4/i, (msg) ->	
 			robot.logger.info robot.brain.data.questions
 			msg.send "Questions displayed in log."
 
