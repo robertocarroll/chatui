@@ -32,7 +32,8 @@ module.exports = (robot) ->
 		robot.logger.info "Loading knowledge"
 		robot.brain.data.questions ?= {}
 
-		if _.isUndefined(robot.brain.data.questions) then robot.brain.data.questions = initial_question_bank
+		# if _.isUndefined(robot.brain.data.questions) then 
+		robot.brain.data.questions = initial_question_bank
 		question_bank = robot.brain.data.questions
 		current_question = null
 		question_ids = Object.keys(question_bank)
@@ -55,7 +56,6 @@ module.exports = (robot) ->
 				question_text = "Thanks for talking to me. "
 			else 	 			
 				used_questions.push current_question
-				robot.logger.info used_questions
 				question_ids = _.difference(question_ids, used_questions)
 				question_text = question_bank[current_question].question
 			cb question_text
