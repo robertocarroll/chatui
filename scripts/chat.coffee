@@ -104,7 +104,7 @@ module.exports = (robot) ->
 		robot.hear /remove4 (.*)$/i, (msg) ->
 			question_cull = msg.match[1]
 			robot.logger.info question_cull	
-			# robot.brain.data.questions.splice(question_cull, 1)
+			robot.brain.data.questions.splice(question_cull, 1)
 			msg.send "OK, I've removed question ID \"#{question_cull}\" from the question bank"	
 
 	
