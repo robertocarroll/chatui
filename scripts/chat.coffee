@@ -3,6 +3,8 @@
 #
 # Dependencies:
 #   redis-brain.coffee
+#   Moment
+#   Underscore
 #
 # Configuration:
 #   None
@@ -15,6 +17,7 @@
 moment = require 'moment'
 _ = require('underscore')
 
+#   Text message is 160 characters
 initial_question_bank = {
 	1: {question: "What's the quietest thing you can hear?", my_answer: '', answers: []},
 	2: {question: "What one word would you use to describe me?", my_answer: '', answers: []}
@@ -70,10 +73,10 @@ module.exports = (robot) ->
 			answers_without_current = current_question_answers.filter (exclude_current) -> exclude_current isnt answer	
 			shuffled_answer = shuffle (answers_without_current)
 			getQuestion (question_text) ->
-				robot.logger.info robot.brain.data.questions
+				robot.logger.info "Here's all the questions and answers: " + JSON.stringify(question_bank)
 				msg.send [msg.random response_to_answer] + [if shuffled_answer.length > 0 then 'Someone else told me ' + "'" + shuffled_answer[0] + "'. "] + question_text
 
-			robot.hear /reset/i, (msg) ->	
+			robot.hear /reset4/i, (msg) ->	
 				question_bank = robot.brain.data.questions
 				current_question = null
 				question_ids = Object.keys(question_bank)
