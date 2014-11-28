@@ -63,8 +63,8 @@ module.exports = (robot) ->
 			cb question_text
 
 		robot.hear /chat/i, (msg) ->
-			getQuestion (question_text) ->  			
-				msg.send question_text
+			getQuestion (question_text) -> 		
+				msg.send question_text 
 
 		robot.hear /answer (.*)$/i, (msg) ->
 			answer = msg.match[1]
