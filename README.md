@@ -10,6 +10,11 @@ I have arrived at the Central Library in Manchester. I am meeting a friend at th
 ## Value
 ![Diagram of possible uses of MEN project](https://farm8.staticflickr.com/7485/15662826668_23c1ee4ea3_c.jpg)
 
+### Phase 2 update (28 November 2014)
+During the process of building this project, the targeted and specific nature of the tasks seems to be vital over general commands, e.g. instead of "latest news" get latest news about the Central Library or instead of "weather" tell me if it is going to rain in an hour. 
+
+We have to do the work so the user does not have to.  
+
 ## Aims / Guides
 - Serve relevant information from a wide range of sources in playful, witty and engaging ways
 - Encourage sharing / encounters in the city

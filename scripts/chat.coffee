@@ -22,6 +22,7 @@ initial_question_bank = {
 	1: {question: "What's the quietest thing you can hear?", my_answer: '', answers: []},
 	2: {question: "What one word would you use to describe me?", my_answer: '', answers: []}
 	3: {question: "What makes me unique?", my_answer: '', answers: []}
+	4: {question: "What do you think my columns are made of?", my_answer: 'Metal coated in chips of marble', answers: []}
 }
 
 # Varied response
@@ -62,7 +63,7 @@ module.exports = (robot) ->
 				question_text = question_bank[current_question].question
 			cb question_text
 
-		robot.hear /chat/i, (msg) ->
+		robot.hear /talk/i, (msg) ->
 			getQuestion (question_text) -> 		
 				msg.send question_text 
 
@@ -74,7 +75,7 @@ module.exports = (robot) ->
 			shuffled_answer = shuffle (answers_without_current)
 			getQuestion (question_text) ->
 				robot.logger.info "Here's all the questions and answers: " + JSON.stringify(question_bank)
-				msg.send [msg.random response_to_answer] + [if shuffled_answer.length > 0 then 'Someone else told me ' + "'" + shuffled_answer[0] + "'. "] + question_text
+				msg.send [msg.random response_to_answer] + [] + [if shuffled_answer.length > 0 then 'Someone else told me ' + "'" + shuffled_answer[0] + "'. "] + question_text
 
 			robot.hear /reset4/i, (msg) ->	
 				question_bank = robot.brain.data.questions
