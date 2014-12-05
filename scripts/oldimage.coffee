@@ -7,7 +7,7 @@
 # Configuration:
 #   None
 #
-# Command:
+# Commands:
 #   old image - Display a random image of the Central library from http://images.manchester.gov.uk
 #
 # Author:

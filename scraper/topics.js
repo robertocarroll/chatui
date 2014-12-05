@@ -1,10 +1,7 @@
 var scraper = require('./scraper.js');
-var request = require('request');
 
 var topics = [
-'http://www.manchestereveningnews.co.uk/all-about/manchester-central-reference-library'];
-
-
+  'http://www.manchestereveningnews.co.uk/all-about/manchester-central-reference-library'];
 
 // **************************************************************************
 // SCRAPE ARTICLES FROM TOPIC PAGES LISTED ABOVE - ITEMS SCRAPED IN PARALLEL

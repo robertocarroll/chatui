@@ -1,7 +1,7 @@
 # Description
 #   Remembers a key and value
 #
-# Command:
+# Commands:
 #   hubot what is|remember <key> - Returns a string
 #   hubot remember <key> is <value>. - Returns nothing. Remembers the text for next time!
 #   hubot what do you remember - Returns everything hubot remembers.
