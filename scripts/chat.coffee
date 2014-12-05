@@ -59,7 +59,7 @@ module.exports = (robot) ->
 				question_text = question_bank[current_question].question
 			cb question_text
 
-		robot.hear /chat/i, (msg) ->
+		robot.hear /talk/i, (msg) ->
 			getQuestion (question_text) ->  			
 				msg.send question_text
 

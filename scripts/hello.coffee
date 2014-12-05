@@ -48,7 +48,7 @@ pleasantry = [
 ]
 
 chatEnding = [
-	"How can I help? Type 'chat' for a conversation or 'help' to find out more about me."
+	"How can I help? Type 'talk' for a conversation or 'detail' to find out more about me."
 ]
 
 module.exports = (robot) ->

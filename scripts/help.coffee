@@ -52,7 +52,7 @@ helpContents = (name, commands) ->
   """
 
 module.exports = (robot) ->
-  robot.hear /help\s*(.*)?$/i, (msg) ->
+  robot.hear /detail\s*(.*)?$/i, (msg) ->
     cmds = robot.helpCommands()
     filter = msg.match[1]
 

@@ -31,6 +31,11 @@ I have arrived at the Central Library in Manchester. I am meeting a friend at th
 - Front-load experience. First interaction has to be really good
 - Always try to keep the conversation going
 
+### Phase 2 update (28 November 2014)
+During the process of building this project, the targeted and specific nature of the tasks seems to be vital over general commands, e.g. instead of "latest news" get latest news about the Central Library or instead of "weather" tell me if it is going to rain in an hour. 
+
+We have to do the work so the user does not have to.  
+
 ## Hubot 
 Need Redis running to run Hubot locally:
 redis-server /usr/local/etc/redis.conf

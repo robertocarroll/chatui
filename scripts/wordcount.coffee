@@ -2,7 +2,7 @@
 #   Wordcount for Central library topic page 
 #
 # Commands:
-#   local news details - Details about Central library stories
+#   local news - Details about Central library stories
 #
 
 module.exports = (robot) ->
