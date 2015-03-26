@@ -17,9 +17,8 @@ _ = require('underscore')
 
 initial_question_bank = {
 	1: {question: "What's the quietest thing you can hear?", my_answer: '', answers: []},
-	2: {question: "What one word would you use to describe my neighbourhood?", my_answer: '', answers: []}
-	3: {question: "What makes my neighbourhood unique?", my_answer: '', answers: []},
-	4: {question: "What are you scared of in my neighbourhood?", my_answer: '', answers: []}
+	2: {question: "What one word would you use to describe me?", my_answer: '', answers: []}
+	3: {question: "What makes me unique?", my_answer: '', answers: []}
 }
 
 # Varied response
@@ -33,7 +32,7 @@ module.exports = (robot) ->
 		robot.logger.info "Loading knowledge"
 		robot.brain.data.questions ?= {}
 
-		# if _.isUndefined(robot.brain.data.questions) then robot.brain.data.questions = initial_question_bank
+		if _.isUndefined(robot.brain.data.questions) then robot.brain.data.questions = initial_question_bank
 		question_bank = robot.brain.data.questions
 		current_question = null
 		question_ids = Object.keys(question_bank)

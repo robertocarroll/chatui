@@ -10,7 +10,7 @@
 #   None
 #
 # Commands:
-#   latest - Gets the latest story from MEN about Manchester City Centre
+#   latest local news - Gets the latest story from MEN about the Manchester Central library.
 #
 # Author:
 #   robertocarroll
@@ -23,7 +23,7 @@ getTheArticle = (callback) ->
   feedparser = new FeedParser()
 
   req = request(
-    url: 'http://www.manchestereveningnews.co.uk/all-about/manchester-city-centre?service=rss'
+    url: 'http://www.manchestereveningnews.co.uk/all-about/manchester-central-reference-library?service=rss'
 
     headers:
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36'
@@ -49,9 +49,9 @@ getTheArticle = (callback) ->
   )
 
 module.exports = (robot) ->
-  robot.hear /latest news|latest ?/i, (msg) ->
+  robot.hear /latest local story|latest story about you ?/i, (msg) ->
     gotItThanks = false
+
     getTheArticle (article, theLink, theDate) ->
-    	theArticle = article.substring(0,48)+"[...]";
-    	msg.send "I bring to you: #{theArticle} #{theLink} It’s #{theDate} old." unless gotItThanks
-    	gotItThanks = true
+      msg.send "Here's the latest news about me: '#{article}'. Find out more here: #{theLink}" unless gotItThanks
+      gotItThanks = true
